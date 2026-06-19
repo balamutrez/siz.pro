@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>СИЗ.ПРО — Подбор фильтров СИЗОД</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <div class="logo">СИЗ<span class="logo-dot">.</span>ПРО</div>
+      <div class="tagline">Подбор фильтров СИЗОД по СанПиН 1.2.3685-21 и ГОСТ 12.4.235-2019</div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="input-section">
+      <h1>Какие вещества есть в воздухе рабочей зоны?</h1>
+      <p class="lead">
+        Начните вводить название вещества, синоним или CAS-номер — система предложит варианты из базы СанПиН 1.2.3685-21.
+      </p>
+
+      <div class="search-box">
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Например: толуол, кумол, аммиак, 7664-41-7…"
+          autocomplete="off"
+        />
+        <div id="suggestions" class="suggestions hidden"></div>
+      </div>
+
+      <div id="selection-list" class="selection-list"></div>
+
+      <button id="calc-button" class="calc-button">Подобрать СИЗОД</button>
+    </section>
+
+    <section id="result" class="result hidden"></section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>СИЗ.ПРО — справочный инструмент. Не заменяет консультацию специалиста по охране труда.</p>
+    </div>
+  </footer>
+
+  <script src="js/recommendation.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

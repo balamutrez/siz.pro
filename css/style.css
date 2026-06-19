@@ -1,0 +1,572 @@
+/* -----------------------------------------------------------------------
+   СИЗ.ПРО — стили
+   Дизайн ориентирован на профессиональную аудиторию (специалисты ОТ):
+   спокойная палитра, чёткая иерархия, цветовая кодировка марок фильтров
+   соответствует реальной маркировке СИЗОД по ГОСТ 12.4.235-2019.
+   ----------------------------------------------------------------------- */
+
+:root {
+  --bg: #F7F6F3;
+  --surface: #FFFFFF;
+  --ink: #1F2A24;
+  --ink-soft: #5B6B62;
+  --line: #DDE3DE;
+  --accent: #2D5A4A;
+  --accent-soft: #E4EEE8;
+  --warning-bg: #FCEFE3;
+  --warning-ink: #9A4A1A;
+  --font-display: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-body: 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+  --radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* --- Header --- */
+.site-header {
+  background: var(--accent);
+  color: #fff;
+  padding: 28px 0;
+}
+
+.site-header .container {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.logo {
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.logo-dot {
+  color: #9FD8C0;
+}
+
+.tagline {
+  font-size: 0.9rem;
+  color: #CFE6DC;
+}
+
+/* --- Input section --- */
+.input-section {
+  padding: 40px 0 24px;
+}
+
+.input-section h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 0 0 8px;
+}
+
+.lead {
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+  font-size: 0.95rem;
+}
+
+.search-box {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+#search-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-body);
+}
+
+#search-input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  max-height: 320px;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: 0 8px 24px rgba(31, 42, 36, 0.08);
+}
+
+.suggestions.hidden {
+  display: none;
+}
+
+.suggestion-item {
+  padding: 10px 16px;
+  cursor: pointer;
+  border-bottom: 1px solid var(--line);
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover,
+.suggestion-item:focus {
+  background: var(--accent-soft);
+}
+
+.suggestion-name {
+  font-weight: 500;
+}
+
+.suggestion-synonyms {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+
+/* --- Selection list --- */
+.selection-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.empty-hint {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  padding: 16px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+  text-align: center;
+  margin: 0;
+}
+
+.selection-row {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: center;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 12px 14px;
+}
+
+.selection-info {
+  min-width: 0;
+}
+
+.selection-name {
+  font-weight: 500;
+  overflow-wrap: break-word;
+}
+
+.selection-meta {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  margin-top: 2px;
+  font-family: var(--font-mono);
+}
+
+.concentration-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 130px;
+}
+
+.concentration-wrap label {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+}
+
+.concentration-wrap input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+
+.concentration-wrap input:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+
+.remove-btn {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  width: 36px;
+  height: 36px;
+  font-size: 1.2rem;
+  line-height: 1;
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+
+.remove-btn:hover,
+.remove-btn:focus {
+  border-color: var(--warning-ink);
+  color: var(--warning-ink);
+}
+
+/* --- Calculate button --- */
+.calc-button {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  font-size: 1rem;
+  font-weight: 600;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font-body);
+}
+
+.calc-button:hover,
+.calc-button:focus {
+  background: #234739;
+}
+
+/* --- Result section --- */
+.result {
+  padding: 24px 0 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.result.hidden {
+  display: none;
+}
+
+.result-block {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+
+.result-block h3 {
+  margin: 0 0 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.filter-badge {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 1.6rem;
+  font-weight: 700;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 8px 18px;
+  border-radius: var(--radius);
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
+.ffp-badge {
+  font-size: 1.3rem;
+}
+
+.marks-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.marks-list li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.mark-swatch {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.face-badge-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.face-badge-or {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+.face-badge {
+  display: inline-block;
+  font-size: 1.05rem;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius);
+}
+
+.face-badge--half {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.face-badge--full {
+  background: #E8F0FE;
+  color: #1A4AA0;
+}
+
+.note {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin: 8px 0 0;
+}
+
+.note.warning {
+  color: var(--warning-ink);
+  background: var(--warning-bg);
+  padding: 10px 12px;
+  border-radius: var(--radius);
+}
+
+/* --- Ratio table --- */
+.ratio-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.ratio-table th,
+.ratio-table td {
+  text-align: left;
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ratio-table th {
+  color: var(--ink-soft);
+  font-weight: 500;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.ratio-table td:nth-child(2),
+.ratio-table td:nth-child(3),
+.ratio-table td:nth-child(4),
+.ratio-table th:nth-child(2),
+.ratio-table th:nth-child(3),
+.ratio-table th:nth-child(4) {
+  font-family: var(--font-mono);
+  text-align: right;
+}
+
+.ratio-medium {
+  color: var(--warning-ink);
+  font-weight: 600;
+}
+
+.ratio-high {
+  color: #B3261E;
+  font-weight: 700;
+}
+
+/* --- Disclaimer --- */
+.disclaimer {
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  padding: 14px 16px;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius);
+}
+
+/* --- Footer --- */
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 20px 0;
+}
+
+.site-footer p {
+  margin: 0;
+  font-size: 0.82rem;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .selection-row {
+    grid-template-columns: 1fr;
+  }
+
+  .remove-btn {
+    justify-self: end;
+  }
+
+  .concentration-wrap {
+    min-width: 0;
+  }
+}
+
+/* --- Reduced motion --- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --- Новые стили (обновление) --- */
+
+/* Лицевая часть: два варианта рядом */
+.face-options {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.face-or {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.face-badge--option {
+  margin-bottom: 0;
+}
+
+.face-badge--full-only {
+  background: #FCE4D6;
+  color: #9A4A1A;
+}
+
+/* Фильтр рекомендован (не обязателен) */
+.filter-badge--recommended {
+  background: #E8F4E8;
+  color: #2D6A2D;
+  border: 1px dashed #5A9A5A;
+}
+
+.below-pdk-note {
+  background: #E8F4E8;
+  color: #2D5A2D;
+  padding: 10px 12px;
+  border-radius: var(--radius);
+  margin-bottom: 10px !important;
+}
+
+/* Предупреждение: фильтр неприменим */
+.warning-block {
+  border-color: var(--warning-ink);
+}
+
+.warning-block h3 {
+  color: var(--warning-ink);
+}
+
+/* Таблица: строки ниже ПДК */
+.row-below-pdk td {
+  color: var(--ink-soft);
+}
+
+.row-not-applicable td {
+  color: var(--warning-ink);
+}
+
+/* Статус в таблице */
+.status-ok {
+  color: #2D6A2D;
+  font-weight: 500;
+}
+
+.status-warn {
+  color: var(--warning-ink);
+  font-weight: 600;
+}
+
+.status-na {
+  color: var(--warning-ink);
+  font-style: italic;
+}
+
+/* Таблица: добавляем колонку статус */
+.ratio-table th:nth-child(5),
+.ratio-table td:nth-child(5) {
+  font-family: var(--font-body);
+  text-align: left;
+  font-size: 0.82rem;
+}
+
+/* filter_note — подсказка по конкретному веществу */
+.filter-note {
+  background: #EEF4FB;
+  color: #1A4A7A;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+  border-left: 3px solid #5B9BD5;
+  margin-top: 8px !important;
+  font-size: 0.87rem;
+}
+
+/* Список причин для «только маска» */
+.full-mask-reasons {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.full-mask-reasons li {
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  padding-left: 12px;
+  border-left: 2px solid #E8A080;
+}
+
+.full-mask-reasons li strong {
+  color: var(--ink);
+}
