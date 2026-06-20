@@ -293,6 +293,9 @@ function appendRatioTable(container, result) {
   title.textContent = 'Кратность превышения ПДК (справочно)';
   detailsBlock.appendChild(title);
 
+  const tableWrap = document.createElement('div');
+  tableWrap.className = 'table-scroll-wrap';
+
   const table = document.createElement('table');
   table.className = 'ratio-table';
   const thead = document.createElement('thead');
@@ -348,7 +351,8 @@ function appendRatioTable(container, result) {
     tbody.appendChild(tr);
   });
   table.appendChild(tbody);
-  detailsBlock.appendChild(table);
+  tableWrap.appendChild(table);
+  detailsBlock.appendChild(tableWrap);
   container.appendChild(detailsBlock);
 }
 

@@ -570,3 +570,65 @@ body {
 .full-mask-reasons li strong {
   color: var(--ink);
 }
+
+/* --- Исправление горизонтального переполнения на мобильных --- */
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 760px;
+  width: 100%;
+}
+
+/* Таблица кратностей: собственный горизонтальный скролл внутри блока,
+   не расширяет страницу */
+.table-scroll-wrap {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.ratio-table {
+  min-width: 480px; /* таблица остаётся читаемой, скроллится внутри обёртки */
+}
+
+/* Длинные названия веществ без пробелов не должны распирать контейнер */
+.selection-name,
+.suggestion-name,
+.full-mask-reasons li,
+.filter-note {
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+@media (max-width: 600px) {
+  .result-block {
+    padding: 16px 14px;
+  }
+
+  .container {
+    padding: 0 14px;
+  }
+}
+
+/* Подсказка о горизонтальной прокрутке таблицы на мобильных */
+@media (max-width: 600px) {
+  .table-scroll-wrap {
+    position: relative;
+    border-radius: var(--radius);
+  }
+
+  .table-scroll-wrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 18px;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.06));
+    pointer-events: none;
+  }
+}
